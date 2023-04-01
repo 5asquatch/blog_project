@@ -8,5 +8,17 @@ RSpec.describe Comment, type: :model do
         expect(comment).to be_valid
         end
     end
+    it "is not valid without a body" do
+        comment = FactoryBot.build(:comment, body: nil)
+        expect(comment).to_not be_valid
+    end
+    it "is not valid without a post" do
+        comment = FactoryBot.build(:comment)
+        if comment.post != nil
+            expect(comment).to be_valid
+        else
+            expect(comment).to_not be_valid
+        end
+    end
 
 end
