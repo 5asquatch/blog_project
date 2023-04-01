@@ -1,0 +1,16 @@
+current directory: /home/sergey/RailsProjects/Insta/vendor/bundle/ruby/3.0.0/gems/haml-6.1.1/ext/haml
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230329-5131-cqyrnz.rb extconf.rb
+creating Makefile
+
+current directory: /home/sergey/RailsProjects/Insta/vendor/bundle/ruby/3.0.0/gems/haml-6.1.1/ext/haml
+make DESTDIR\= clean
+
+current directory: /home/sergey/RailsProjects/Insta/vendor/bundle/ruby/3.0.0/gems/haml-6.1.1/ext/haml
+make DESTDIR\=
+compiling haml.c
+compiling hescape.c
+linking shared-object haml/haml.so
+
+current directory: /home/sergey/RailsProjects/Insta/vendor/bundle/ruby/3.0.0/gems/haml-6.1.1/ext/haml
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 haml.so ./.gem.20230329-5131-t1ms6w/haml

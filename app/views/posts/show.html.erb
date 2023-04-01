@@ -1,0 +1,55 @@
+<div>
+    <% if @post.image.persisted?%>
+      <%=image_tag(@post.image, height: 900, width: 600)%>
+    <% else %>
+      <%=image_tag ("/default-avatar.png")%>
+    <% end %>
+</div>
+
+<div>
+   <%= @post.title %>
+</div>
+<div>
+   <%= @post.body %>
+</div>
+
+<div>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(@post), method: :post %>
+<% end %>
+
+<div>
+   <b> <%=link_to "#{@post.author}", user_path(@post.user.id) %> <p> </b>
+</div>
+<%= link_to "Back", posts_path %>
+
+<h1>Comments</h1>
+<% @post.comments.each do |comment|%>
+<div>
+   <b><%= comment.author %> </b> <%= ": " %>  <%= comment.body %>
+   <% if comment.user_id == current_user.id%>
+     <p> <%= link_to "Edit", edit_post_comment_path(@post.id, comment.id)%>
+   <% end %>
+
+   <% if @post.user_id == current_user.id || comment.user_id == current_user.id%>
+      <%= link_to "Delete", post_comment_path(@post, comment), data: {
+                     turbo_method: :delete,
+                     turbo_confirm: "Are you sure?"
+                } %>
+   <%end%>
+</div>
+<% end %>
+<%= form_with model: @post.comments.build, url: [@post, @post.comments.build ] do |f| %> 
+    <div>
+    <%= f.label :Write_a_comment! %> 
+    <%= f.text_area :body, rows: 3 %> 
+    </div> 
+    <div>
+    <%= f.submit %> 
+    </div> 
+    <% end %>
+    

@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ .notice{
+   background-color: #f2dede;
+   border-color: #ebccd1;
+   border-radius: 4px;
+   border-style: solid;
+   border-width: 1px;
+   color: #333;
+   font-size: 14px;
+   line-height: 18px;
+   margin: 20px 0;
+   padding: 15px;
+
+}
+
+.alert{
+   background-color: #f2dede;
+   border-color: #ebccd1;
+   color: #333;
+   padding: 10px;
+   margin-top: 200px;
+
+}
+
+ 
+.navbar{
+   background-color: rgb(255, 255, 255);
+    width: 100%;
+    position:static;
+    border-color: #b4b4b4;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    margin-bottom: 20px;
+    
+ }
+
+ .search{
+   margin-left: 480px;
+   margin-top: -200px;
+   justify-content: right;
+ }
+
+  .feed{
+   width: 100%;
+   justify-content: center;
+   margin-left: 50px;
+
+  }
+
+
+  .img-circular{
+   width: 60px;
+   height: 60px;
+   background-size: cover;
+   border-radius: 50px;
+   -webkit-border-radius: 100px;
+   -moz-border-radius: 100px;
+  }
+
+  .text{
+   width: 100%;
+   position: fixed;
+  }

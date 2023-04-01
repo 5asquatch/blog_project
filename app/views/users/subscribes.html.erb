@@ -1,0 +1,11 @@
+<h3><%="#{@user.name}'s Subscribes" %></h3>
+
+<% @followees.each do |followee| %>
+ <p> <% if followee.avatar.present? %>
+        <%= image_tag(followee.avatar, height: 60, width: 60, :class=> "img-circular") %>
+        <% else %>
+        <%= image_tag "default-avatar.png", height: 60, width: 60, :class=> "img-circular"%> 
+    <% end %> 
+  <%= link_to "#{followee.name}", user_path(followee.id) %><br> </p>
+  <p><%= "Followers: #{followee.followers.count} "%> <%= "Follows: #{followee.followees.count} "%> 
+<% end %>
