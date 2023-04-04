@@ -21,4 +21,20 @@ RSpec.describe PostsController, type: :controller do
         end
 
     end
+
+    describe 'GET #show' do
+        context "when user is logged in" do
+            it "renders the show page " do
+                user = FactoryBot.create(:user)
+                post = FactoryBot.build(:post)
+                expect(post).to be_valid
+                sign_in user
+                get :show
+                expect(response).to render_template(:show)
+             end
+        end
+    end
+
+   
+
 end

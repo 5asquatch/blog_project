@@ -14,7 +14,7 @@ class PostsController < ApplicationController
         @post = current_user.posts.build(post_params)
         @post.author = current_user.name
         if @post.save
-        redirect_to root_path
+        redirect_to post_path(@post)
         else
             flash[:error] = "Failed to create post. Please check errors below."
             render :new
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         if @post.update(post_params)
             #redirect_to post_path(@post)
-            redirect_to root_path
+            redirect_to post_path(@post)
         else
             render :edit
         end
