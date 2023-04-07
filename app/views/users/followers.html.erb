@@ -1,0 +1,11 @@
+<h3><%="#{@user.name}'s Followers" %></h3>
+
+<% @followers.each do |follower| %>
+ <li> <% if follower.avatar.present? %>
+        <%= image_tag(follower.avatar, height: 60, width: 60, :class=> "img-circular") %>
+        <% else %>
+        <%= image_tag "default-avatar.png", height: 60, width: 60, :class=> "img-circular"%> 
+    <% end %> 
+  <%= link_to "#{follower.name}", user_path(follower.id) %></li>
+  <p><%= "Followers: #{follower.followers.count} "%> <%= "Follows: #{follower.followees.count} "%> 
+<% end %>

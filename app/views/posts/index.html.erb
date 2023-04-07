@@ -1,0 +1,40 @@
+<p><h1>Feed</h1></p>
+<div class = "feed_table">
+<table>
+    <thead>
+        <tr>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+<tbody>
+<% if @posts.blank?%>
+<h5>Your feed is empty. Try to follow somebody</h5>
+<% else %>
+    <% @posts.each do |post| %>
+        <tr> 
+            <td>
+            <% if post.image.persisted?%>
+                <%= image_tag(post.image, height: 500, width: 500) %>  <p> 
+                <% else %>
+                <%=image_tag ("/default-avatar.png")%>  <p> 
+            <% end %>
+            <b> <%= post.title%> </b> <p>
+            <%= post.body%> <p> 
+            <%= "Author: " %> <%=link_to "#{post.author}", user_path(post.user.id) %> <p> 
+            <%= "Likes: #{post.likes.count} "  %> <p> 
+            </td> 
+            <td><%= link_to "Show", post_path(post) %>   <p>
+                <% if post.user_id == current_user.id%>
+                <%= link_to "Edit", edit_post_path(post)%>  <p> 
+                <%= link_to "Delete", post_path(post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                } %>   <p>
+                <% end %>
+        </tr>
+    <% end %>
+<%end%>
+</tbody>
+</table>
+</div>
