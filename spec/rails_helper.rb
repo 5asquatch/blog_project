@@ -74,5 +74,10 @@ RSpec.configure do |config|
       options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
     )
   end
+
+
+  config.use_transactional_fixtures = false
+
+
   
 end

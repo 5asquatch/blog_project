@@ -74,6 +74,29 @@ RSpec.feature 'User login', type: :feature do
       click_button 'Follow'
       expect(page).to have_selector(:link_or_button, 'Unfollow')
     end
+    scenario 'User go to followers page & unfollow' do
+
+      visit new_user_session_path
+  
+      fill_in 'Email', with: user1.email
+      fill_in 'Password', with: user1.password
+      click_button 'Log in'
+
+      fill_in 'search', with: user2.name
+      click_button 'Search'
+      expect(page).to have_content("#{user2.name}")
+      click_link ("#{user2.name}")
+      expect(page).to have_selector(:link_or_button, 'Follow')
+      click_button 'Follow'
+
+      visit "/subscribes/#{user1.id}"
+      expect(page).to have_content("#{user2.name}")
+      click_link ("#{user2.name}")
+      expect(page).to have_selector(:link_or_button, 'Unfollow')
+      click_button "Unfollow"
+      expect(page).to have_content("Subscribes: 0")
+
+    end
 
     scenario 'User search & null result' do
 

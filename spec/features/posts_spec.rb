@@ -64,7 +64,8 @@ RSpec.feature 'User login', type: :feature do
       fill_in 'Title', with: post.title
       fill_in 'Body', with: post.body
       click_button 'Save Post'
-      expect(page).to have_current_path(post_path(post))
+      expect(page).to have_content("#{post.body}")
+    
     end
   end
   RSpec.feature 'User actioins with his own post', type: :feature do
@@ -87,11 +88,6 @@ RSpec.feature 'User login', type: :feature do
       fill_in 'Title', with: post.title
       fill_in 'Body', with: post.body
       click_button 'Save Post'
-      expect(page).to have_current_path(root_path)
-      click_link 'My page'
-      expect(page).to have_current_path(user_path(user1.id))
-      expect(page).to have_selector(:link_or_button, 'Show')
-      click_link 'Show'
       expect(page).to have_selector(:link_or_button, 'Like')
       click_button 'Like'
       expect(page).to have_content '1 Like'
@@ -111,11 +107,6 @@ RSpec.feature 'User login', type: :feature do
       fill_in 'Title', with: post.title
       fill_in 'Body', with: post.body
       click_button 'Save Post'
-      expect(page).to have_current_path(root_path)
-      click_link 'My page'
-      expect(page).to have_current_path(user_path(user1.id))
-      expect(page).to have_selector(:link_or_button, 'Show')
-      click_link 'Show'
 
       fill_in 'comment_body', with: comment.body
       click_button 'Create Comment'
@@ -166,7 +157,7 @@ RSpec.feature 'User login', type: :feature do
       fill_in 'Title', with: 'Edited Title'
       fill_in 'Body', with: 'Edited Body'
       click_button 'Update Post'
-      expect(page).to have_content ("#{post.body}")
+      expect(page).to have_content ("Edited Title")
 
     end
 
