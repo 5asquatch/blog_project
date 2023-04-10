@@ -8,7 +8,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^4.13.2"
   },
-"scripts": {
+  "scripts": {
     "build": "webpack"
   }
 }
