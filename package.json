@@ -1,14 +1,15 @@
 {
-  "dependencies": {
-    "@hotwired/turbo-rails": "^7.3.0",
-    "@rails/webpacker": "5.4.4"
-  },
-  "devDependencies": {
-    "webpack": "^5.78.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^4.13.2"
-  },
+  "name": "app",
+  "private": "true",
   "scripts": {
-    "build": "webpack"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "esbuild": "^0.17.11",
+    "sass": "^1.58.3"
   }
 }
