@@ -2,22 +2,28 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
-
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
+gem "sprockets-rails"
+gem "pg"
+gem "puma", "~> 5.0"
+gem "turbo-rails"
+gem "jsbundling-rails"
+gem "cssbundling-rails"
+gem "stimulus-rails"
+gem "jbuilder"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
-gem "sprockets-rails"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+
 
 # Devise for registration/autorization
 gem "devise"
 gem "mail"
 gem "webpacker"
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -29,15 +35,12 @@ gem 'haml', '~> 6.1', '>= 6.1.1'
 gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
 
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
 
-gem "pg"
+
+
 gem "bootstrap", "~> 4.1.1"
 gem "jquery-rails"
 gem 'file_validators'
