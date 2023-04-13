@@ -12,6 +12,9 @@ gem "cssbundling-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 
+gem "sass-rails"
+gem "sassc"
+
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
