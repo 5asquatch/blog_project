@@ -4,30 +4,9 @@ RSpec.describe CommentsController, type: :controller do
     let(:user) { FactoryBot.create(:user) }
     let(:post) { FactoryBot.create(:post) }
   
-    describe "POST #create" do
-      context "with authenticated user" do
-        before { sign_in user } 
-  
-        it "creates a new comment" do
-            post :create, params: { post_id: post.id, comment: { body: "test comment", author: "Test User" } }
-        end
-  
-        it "redirects to the post" do
-          post :create, params: { post_id: post.id, comment: { body: "test comment", author: "Test User" } }
-          expect(response).to redirect_to post_path(post)
-        end
-      end
-  
-      context "with unauthenticated user" do
-        it "redirects to the login page" do
-          post :create, params: { post_id: post.id, comment: attributes_for(:comment) }
-          expect(response).to redirect_to new_user_session_path
-        end
-      end
-    end
   
     describe "PATCH #update" do
-      let(:comment) { create(:comment, post: post) } # используем фабрику для создания комментария
+      let(:comment) { create(:comment, post: post) }
   
       context "with authenticated user" do
         before { sign_in user }

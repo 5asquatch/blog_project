@@ -4,7 +4,11 @@ class LikesController < ApplicationController
 
     def find_like
         @like = @post.likes.find(params[:id])
-     end
+    rescue ActiveRecord::RecordNotFound
+        flash[:notice] = "Cannot unlike"
+        redirect_to post_path(@post)
+            
+    end
 
     def create
         if already_liked?
@@ -21,10 +25,10 @@ class LikesController < ApplicationController
     end
 
     def destroy
-        if !(already_liked?)
-        flash[:notice] = "Cannot unlike"
-        else
+        if already_liked?
         @like.destroy
+        else
+        flash[:notice] = "Cannot unlike"
         end
     redirect_to post_path(@post)
     end

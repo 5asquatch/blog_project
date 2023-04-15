@@ -29,19 +29,19 @@ RSpec.describe UsersController, type: :controller do
     describe "POST #follow" do
       it "follows a user" do
         sign_in user
-        post :follow_user, params: { id: another_user.id }
+        post :follow, params: { id: another_user.id }
         expect(user.following?(another_user)).to be true
       end
   
       it "redirects to user profile page" do
         sign_in user
-        post :follow_user_path, params: { id: another_user.id }
+        post :follow, params: { id: another_user.id }
         expect(response).to redirect_to(user_path(another_user))
       end
   
       it "displays an error message when already following a user" do
-        user.follow(another_user)
         sign_in user
+        post :follow, params: { id: another_user.id }
         post :follow, params: { id: another_user.id }
         expect(flash[:alert]).to eq("You are already following this user.")
       end
@@ -49,15 +49,15 @@ RSpec.describe UsersController, type: :controller do
   
     describe "POST #unfollow" do
       it "unfollows a user" do
-        user.follow(another_user)
         sign_in user
+        post :follow, params: { id: another_user.id }
         post :unfollow, params: { id: another_user.id }
         expect(user.following?(another_user)).to be false
       end
   
       it "redirects to user profile page" do
-        user.follow(another_user)
         sign_in user
+        post :follow, params: { id: another_user.id }
         post :unfollow, params: { id: another_user.id }
         expect(response).to redirect_to(user_path(another_user))
       end
